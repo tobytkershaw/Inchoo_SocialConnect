@@ -18,6 +18,8 @@ const OAUTH2_TOKEN_URI = 'https://xfrocks.com/api/oauth/token';
 
 To customise this for use with your site you will want to replace the word "Xenforo" with your forum name in several places in the code.
 
+You should also create a new login button for your site. I have reused the Twitter one for xenforo as a placeholder.
+
 --------------------
 
 Inchoo_SocialConnect is a Magento extension allowing your customers to login or create an account at your store using their Google, Facebook, Twitter or LinkedIn account.
