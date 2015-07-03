@@ -37,6 +37,7 @@ class Inchoo_SocialConnect_Block_Register extends Mage_Core_Block_Template
     protected $clientFacebook = null;
     protected $clientTwitter = null;
     protected $clientLinkedin = null;
+    protected $clientXenforo = null;
 
     protected $numEnabled = 0;
     protected $numShown = 0;
@@ -48,10 +49,12 @@ class Inchoo_SocialConnect_Block_Register extends Mage_Core_Block_Template
         $this->clientFacebook = Mage::getSingleton('inchoo_socialconnect/facebook_oauth2_client');
         $this->clientTwitter = Mage::getSingleton('inchoo_socialconnect/twitter_oauth_client');
         $this->clientLinkedin = Mage::getSingleton('inchoo_socialconnect/linkedin_oauth2_client');
+        $this->clientXenforo = Mage::getSingleton('inchoo_socialconnect/xenforo_oauth2_client');
 
         if( !$this->_googleEnabled() &&
             !$this->_facebookEnabled() &&
             !$this->_twitterEnabled() &&
+            !$this->_xenforoEnabled() &&
             !$this->_linkedinEnabled()) {
             return;
         }
@@ -69,6 +72,9 @@ class Inchoo_SocialConnect_Block_Register extends Mage_Core_Block_Template
         }
 
         if($this->_linkedinEnabled()) {
+            $this->numEnabled++;
+        }
+        if($this->_xenforoEnabled()) {
             $this->numEnabled++;
         }
 
@@ -105,6 +111,10 @@ class Inchoo_SocialConnect_Block_Register extends Mage_Core_Block_Template
     protected function _linkedinEnabled()
     {
         return $this->clientLinkedin->isEnabled();
+    }
+    protected function _xenforoEnabled()
+    {
+        return $this->clientXenforo->isEnabled();
     }
 
 }

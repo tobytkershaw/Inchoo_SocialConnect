@@ -57,6 +57,11 @@
                 <type>skin_css</type>
                 <name>inchoo_socialconnect/linkedin/css/button.css</name>
             </action>
+            <action method="addItem"
+                ifconfig="customer/inchoo_socialconnect_xenforo/enabled">
+                <type>skin_css</type>
+                <name>inchoo_socialconnect/xenforo/css/button.css</name>
+            </action>
         </reference>
     </default>
 
@@ -73,6 +78,7 @@
                 <block type="inchoo_socialconnect/facebook_button" name="inchoo_socialconnect_facebook_login_button" />
                 <block type="inchoo_socialconnect/twitter_button" name="inchoo_socialconnect_twitter_login_button" />
                 <block type="inchoo_socialconnect/linkedin_button" name="inchoo_socialconnect_linkedin_login_button" />
+                <block type="inchoo_socialconnect/xenforo_button" name="inchoo_socialconnect_xenforo_login_button" />
             </block>
         </reference>
     </customer_account_login>
@@ -93,6 +99,7 @@
                 <block type="inchoo_socialconnect/facebook_button" name="inchoo_socialconnect_checkout_facebook_button" />
                 <block type="inchoo_socialconnect/twitter_button" name="inchoo_socialconnect_checkout_twitter_button" />
                 <block type="inchoo_socialconnect/linkedin_button" name="inchoo_socialconnect_checkout_linkedin_button" />
+                <block type="inchoo_socialconnect/xenforo_button" name="inchoo_socialconnect_checkout_xenforo_button" />
             </block>
         </reference>
     </customer_account_create>
@@ -122,6 +129,12 @@
                 <name>inchoo_socialconnect_linkedin</name>
                 <path>socialconnect/account/linkedin</path>
                 <label>LinkedIn Connect</label>
+            </action>
+            <action method="addLink" translate="label" module="inchoo_socialconnect"
+                ifconfig="customer/inchoo_socialconnect_xenforo/enabled">
+                <name>inchoo_socialconnect_xenforo</name>
+                <path>socialconnect/account/xenforo</path>
+                <label>Xenforo Connect</label>
             </action>
         </reference>
     </customer_account>
@@ -221,6 +234,29 @@
             </action>
         </reference>
     </inchoo_socialconnect_account_linkedin>
+    <inchoo_socialconnect_account_xenforo translate="label">
+        <label>Customer My Account Xenforo Connect</label>
+        <update handle="customer_account"/>
+        <reference name="head">
+            <action method="setTitle" translate="title" module="inchoo_socialconnect">
+                <title>Xenforo Connect</title>
+            </action>
+            <action method="addItem">
+                <type>skin_css</type>
+                <name>inchoo_socialconnect/css/styles.css</name>
+            </action>
+        </reference>
+        <reference name="my.account.wrapper">
+            <block type="inchoo_socialconnect/xenforo_account" name="inchoo_socialconnect_xenforo_account">
+                <block type="inchoo_socialconnect/xenforo_button" name="inchoo_socialconnect_account_xenforo_button" />
+            </block>
+        </reference>
+        <reference name="customer_account_navigation">
+            <action method="setActive" module="inchoo_socialconnect">
+                <path>socialconnect/account/xenforo</path>
+            </action>
+        </reference>
+    </inchoo_socialconnect_account_xenforo>
 
     <checkout_onepage_index>
         <reference name="head">
@@ -238,6 +274,7 @@
                 <block type="inchoo_socialconnect/facebook_button" name="inchoo_socialconnect_checkout_facebook_button" />
                 <block type="inchoo_socialconnect/twitter_button" name="inchoo_socialconnect_checkout_twitter_button" />
                 <block type="inchoo_socialconnect/linkedin_button" name="inchoo_socialconnect_checkout_linkedin_button" />
+                <block type="inchoo_socialconnect/xenforo_button" name="inchoo_socialconnect_checkout_xenforo_button" />
             </block>
         </reference>
     </checkout_onepage_index>

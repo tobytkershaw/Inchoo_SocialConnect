@@ -65,7 +65,15 @@
                     <p><?php echo $this->__('You can login using your LinkedIn account.'); ?></p>
                 </div>
             </div>
-            <?php endif; ?>            
+            <?php endif; ?>
+            <?php if($this->_xenforoEnabled()): ?>
+            <div class="<?php echo $this->_getDescCol(); ?> new-users inchoo-socialconnect-login-upper-xenforo">
+                <div class="content">
+                    <h2><?php echo $this->__('Xenforo Connect'); ?></h2>
+                    <p><?php echo $this->__('You can login using your Xenforo account.'); ?></p>
+                </div>
+            </div>
+            <?php endif; ?>          
         </div>
         <div class="<?php echo $this->_getColSet(); ?> inchoo-socialconnect-login-lower">
             <?php if($this->_googleEnabled()): ?>
@@ -95,7 +103,14 @@
                     <?php echo $this->getChildHtml('inchoo_socialconnect_linkedin_login_button'); ?>
                 </div>
             </div>
-            <?php endif; ?>            
+            <?php endif; ?>  
+            <?php if($this->_xenforoEnabled()): ?>
+            <div class="<?php echo $this->_getButtCol(); ?> inchoo-socialconnect-login-lower-xenforo">
+                <div class="buttons-set">
+                    <?php echo $this->getChildHtml('inchoo_socialconnect_xenforo_login_button'); ?>
+                </div>
+            </div>
+            <?php endif; ?>          
         </div>
     </div>
 </div>
